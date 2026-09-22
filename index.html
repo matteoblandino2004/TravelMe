@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TravelMe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+      </svg>
+      TravelMe
+    </div>
+    <div class="trips" id="trips" role="tablist" aria-label="Your trips"></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="btn btn-sm" id="unitsBtn" title="Switch between kilometres and miles"><span class="mono" id="unitsLabel">KM</span></button>
+      <button class="btn btn-sm btn-primary" id="newTripBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        New trip
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="hero" aria-labelledby="heroCity">
+    <div class="hero-sky" id="heroSky"></div>
+    <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
+    <div class="tm-skyline" id="heroSkyline" aria-hidden="true"></div>
+
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow" id="heroEyebrow" style="color:rgba(255,255,255,.72)">Next trip</div>
+        <h1 class="hero-city" id="heroCity">—</h1>
+        <p class="hero-sub" id="heroSub"></p>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-sm" id="editTripBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Edit trip
+        </button>
+        <button class="btn btn-sm" id="deleteTripBtn" title="Delete this trip" aria-label="Delete this trip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="countdown" id="countdown" role="timer" aria-live="off"></div>
+      <div class="hero-status">
+        <div class="big" id="statusBig">—</div>
+        <div class="small" id="statusSmall"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <div class="col">
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Your base</h2>
+          <button class="btn btn-sm" id="hotelBtn">Change hotel</button>
+        </div>
+        <div id="baseCard"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Itinerary</h2>
+          <button class="btn btn-sm btn-primary" id="addSpotBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            Add spot
+          </button>
+        </div>
+        <div class="filters" id="sortRow"></div>
+        <div class="list" id="savedList"></div>
+        <p class="panel-note" id="savedNote" style="margin-top:12px"></p>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Distance from base</h2>
+          <span class="panel-note" id="mapNote"></span>
+        </div>
+        <div class="map-wrap" id="mapWrap">
+          <div class="map-tip" id="mapTip"></div>
+        </div>
+        <div class="map-legend" id="mapLegend"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">You might also like</h2>
+          <button class="btn btn-sm btn-ghost" id="shuffleBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6M4 4l5 5"/></svg>
+            Reshuffle
+          </button>
+        </div>
+        <div class="recs" id="recs"></div>
+      </section>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <span>Distances are straight-line estimates from your hotel, with a route allowance added to walking and riding times. Treat them as planning numbers, not directions.</span>
+    <span class="mono" id="syncNote"></span>
+  </footer>
+</main>
+
+<dialog id="tripDlg" aria-labelledby="tripDlgTitle">
+  <form method="dialog" id="tripForm">
+    <div class="dlg-head">
+      <h2 class="dlg-title" id="tripDlgTitle">New trip</h2>
+      <button class="btn btn-icon btn-ghost" value="cancel" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="dlg-body">
+      <div class="field">
+        <label for="fCity">Where are you going?</label>
+        <div class="choices" id="fCityChoices"></div>
+        <select id="fCity" class="sr" tabindex="-1" aria-hidden="true"></select>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="fDate">Arrival date</label>
+          <input class="input" type="date" id="fDate" required>
+        </div>
+        <div class="field">
+          <label for="fTime">Arrival time (local)</label>
+          <input class="input" type="time" id="fTime" value="14:00" required>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field">
+          <label for="fBack">Flying home</label>
+          <input class="input" type="date" id="fBack">
+        </div>
+        <div class="field">
+          <label for="fName">Trip name</label>
+          <input class="input" type="text" id="fName" placeholder="Optional" maxlength="40">
+        </div>
+      </div>
+      <div class="field">
+        <label>What are you there for?</label>
+        <div class="choices" id="fVibes"></div>
+        <p class="hint">Used to weight the recommendations. Pick as many as you like.</p>
+      </div>
+    </div>
+    <div class="dlg-foot">
+      <button class="btn" value="cancel" type="submit">Cancel</button>
+      <button class="btn btn-primary" value="save" type="submit" id="tripSave">Save trip</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="hotelDlg" aria-labelledby="hotelDlgTitle">
+  <div class="dlg-head">
+    <h2 class="dlg-title" id="hotelDlgTitle">Where are you staying?</h2>
+    <button class="btn btn-icon btn-ghost" id="hotelClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="dlg-body">
+    <div class="choices" id="hotelChoices"></div>
+    <div class="field">
+      <label for="hName">Staying somewhere else?</label>
+      <input class="input" type="text" id="hName" placeholder="Hotel or flat name" maxlength="48">
+      <p class="hint">Pick the closest neighbourhood so distances stay honest.</p>
+      <select class="input" id="hArea"></select>
+    </div>
+  </div>
+  <div class="dlg-foot">
+    <button class="btn" id="hotelCancel">Cancel</button>
+    <button class="btn btn-primary" id="hotelSave">Use this address</button>
+  </div>
+</dialog>
+
+<dialog id="spotDlg" aria-labelledby="spotDlgTitle">
+  <div class="dlg-head">
+    <div>
+      <h2 class="dlg-title" id="spotDlgTitle">Add a spot</h2>
+      <p class="hint" id="spotDlgSub"></p>
+    </div>
+    <button class="btn btn-icon btn-ghost" id="spotClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="dlg-body">
+    <input class="input" type="search" id="spotSearch" placeholder="Search restaurants, sights, bars…" aria-label="Search places">
+    <div class="filters" id="spotFilters"></div>
+    <div class="list" id="spotList"></div>
+  </div>
+  <div class="dlg-foot">
+    <span class="hint" style="margin-right:auto" id="spotCount"></span>
+    <button class="btn btn-primary" id="spotDone">Done</button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="skylines.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
