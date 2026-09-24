@@ -179,6 +179,7 @@
 
   function persist() {
     try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* ignore */ }
+    if (window.TM_SOCIAL) window.TM_SOCIAL.sync();
     if (!remote) return;
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
@@ -999,6 +1000,18 @@
       stars(c.sky + c.id);
     }, 150);
   });
+
+  /* ---------- api for the social layer ---------- */
+
+  window.TM_APP = {
+    get state() { return state; },
+    trip: trip,
+    schedule: schedule,
+    city: city,
+    persist: persist,
+    renderAll: renderAll,
+    esc: esc
+  };
 
   /* ---------- boot ---------- */
 

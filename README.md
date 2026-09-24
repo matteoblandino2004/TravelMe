@@ -33,6 +33,26 @@ Amsterdam) have a bespoke hand-drawn skyline. The rest share seven archetype
 skylines — modern, old-European, domes-and-minarets, Asian temple, coastal,
 Latin colonial and harbour — chosen per city.
 
+## Sharing and friends
+
+The account build adds an opt-in social layer:
+
+- **Three visibility levels** — Private (default, nothing is published), Friends
+  (people who added you see current and upcoming trips) and Public (anyone using
+  the app sees your trips, past ones included).
+- **Privacy is enforced at write time, not in the UI.** Nothing about a trip
+  reaches shared storage until you turn sharing on, and a published trip carries
+  only the neighbourhood you are staying in — the hotel name is included solely
+  for trips where you switch it on. A "What others can see" panel shows the
+  exact published record.
+- **Friends** are mutual: you add someone, they add you back.
+- **Overlap detection** flags when you and someone else are in the same city on
+  the same dates.
+
+Anything published is readable by anyone who can open that artifact, so
+"Friends" scopes the feed, not the database. The plain-website build has no
+sign-in and therefore no social features; it says so rather than failing.
+
 ## Running it
 
 It's a static site with no build step and no dependencies:

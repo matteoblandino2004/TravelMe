@@ -19,6 +19,10 @@
       </svg>
       TravelMe
     </div>
+    <div class="tabs" id="viewTabs" role="tablist" aria-label="View">
+      <button data-view="trips" aria-pressed="true">Trips</button>
+      <button data-view="social" aria-pressed="false">Friends</button>
+    </div>
     <div class="trips" id="trips" role="tablist" aria-label="Your trips"></div>
     <div style="display:flex;gap:8px;align-items:center">
       <button class="btn btn-sm" id="unitsBtn" title="Switch between kilometres and miles"><span class="mono" id="unitsLabel">KM</span></button>
@@ -32,6 +36,7 @@
 
 <main class="wrap">
 
+  <div id="viewTrips">
   <section class="hero" id="hero" aria-labelledby="heroCity">
     <div class="hero-sky" id="heroSky"></div>
     <canvas class="hero-stars" id="heroStars" aria-hidden="true"></canvas>
@@ -49,6 +54,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
           Edit trip
         </button>
+        <button class="btn btn-sm" id="shareTripBtn" hidden>Sharing trip</button>
         <button class="btn btn-sm" id="deleteTripBtn" title="Delete this trip" aria-label="Delete this trip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
         </button>
@@ -121,6 +127,68 @@
       </section>
     </div>
 
+  </div>
+
+  </div><!-- /viewTrips -->
+
+  <div id="viewSocial" hidden>
+    <section class="panel" id="socialGate" hidden>
+      <div class="panel-head"><h2 class="panel-title">Friends need an account</h2></div>
+      <p>This copy of TravelMe runs as a plain website with no sign-in, so it has nowhere to
+      keep a shared profile and no way to tell who you are. Your trips live in this browser only.</p>
+      <p class="panel-note" style="margin-top:10px">Open the account version of TravelMe to share
+      trips, add friends and see where they are going. Everything else works the same in both.</p>
+    </section>
+
+    <div id="socialLive" hidden>
+      <div class="grid">
+        <div class="col">
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Your sharing</h2></div>
+            <div class="me-card">
+              <div>
+                <div class="me-name" id="meName">—</div>
+                <div class="panel-note" id="meSub"></div>
+              </div>
+            </div>
+            <div class="seg" id="visSeg" role="group" aria-label="Who can see your trips"></div>
+            <p class="hint" style="margin-top:10px">Sharing is off until you choose otherwise, and
+            hotel names stay out of what you publish unless you switch them on per trip.
+            Anything you do share is stored in this app's shared space, so treat
+            <b>Friends</b> as "people using this app", not as a lock.</p>
+
+            <div class="eyebrow" style="margin:16px 0 8px">Trip by trip</div>
+            <div id="tripShareList"></div>
+
+            <details class="preview">
+              <summary>What others can see</summary>
+              <div id="sharePreview"></div>
+            </details>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head"><h2 class="panel-title">Find people</h2></div>
+            <input class="input" type="search" id="peopleSearch" placeholder="Search by name…" aria-label="Search people">
+            <div id="peopleResults" style="margin-top:10px"></div>
+            <div class="eyebrow" style="margin:16px 0 8px">Your people</div>
+            <div id="friendList"></div>
+          </section>
+        </div>
+
+        <div class="col">
+          <section class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">Where everyone's going</h2>
+              <div class="filters" id="feedFilter" data-mode="all">
+                <button class="pill" data-mode="all" aria-pressed="true">Everyone</button>
+                <button class="pill" data-mode="friends" aria-pressed="false">Friends</button>
+              </div>
+            </div>
+            <div id="feed"></div>
+          </section>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="foot">
@@ -242,5 +310,6 @@
 <script src="data/cities-rest.js"></script>
 <script src="skylines.js"></script>
 <script src="app.js"></script>
+<script src="social.js"></script>
 </body>
 </html>
