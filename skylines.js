@@ -420,4 +420,340 @@ window.TM_SKYLINES = {
       <rect x="966" y="268" width="8" height="13"/><rect x="984" y="268" width="8" height="13"/>
     </g>
   </g>`
+,
+
+  /* ---- archetypes: used by cities without a bespoke drawing ---- */
+
+  modern: `
+  <g class="sl-far">
+    <rect x="20" y="210" width="60" height="130"/><rect x="100" y="240" width="70" height="100"/>
+    <rect x="300" y="190" width="54" height="150"/><rect x="420" y="225" width="66" height="115"/>
+    <rect x="700" y="205" width="58" height="135"/><rect x="800" y="235" width="74" height="105"/>
+    <rect x="1000" y="215" width="62" height="125"/><rect x="1110" y="245" width="80" height="95"/>
+  </g>
+  <g class="sl-mid">
+    <rect x="80" y="255" width="80" height="85"/><rect x="238" y="232" width="56" height="108"/>
+    <rect x="370" y="250" width="48" height="90"/><rect x="616" y="238" width="60" height="102"/>
+    <rect x="762" y="255" width="50" height="85"/><rect x="930" y="228" width="58" height="112"/>
+    <rect x="1064" y="252" width="46" height="88"/>
+    <rect x="258" y="212" width="4" height="22"/><rect x="954" y="206" width="4" height="24"/>
+  </g>
+  <g class="sl-near">
+    <!-- supertall -->
+    <path d="M516 340 534 132 540 60 546 132 564 340Z"/>
+    <rect x="538" y="20" width="4" height="42"/>
+    <!-- stepped tower -->
+    <rect x="180" y="178" width="56" height="162"/>
+    <rect x="166" y="222" width="84" height="118"/>
+    <rect x="194" y="146" width="28" height="34"/>
+    <!-- tapered slab -->
+    <path d="M652 340 666 168h34l14 172Z"/>
+    <!-- round-topped tower -->
+    <path d="M858 340V206a31 31 0 0 1 62 0v134Z"/>
+    <!-- angled-top tower -->
+    <path d="M996 340V212l58-28v156Z"/>
+    <!-- podium wall -->
+    <rect x="0" y="294" width="170" height="46"/><rect x="250" y="300" width="130" height="40"/>
+    <rect x="400" y="288" width="110" height="52"/><rect x="580" y="298" width="66" height="42"/>
+    <rect x="726" y="292" width="126" height="48"/><rect x="930" y="300" width="60" height="40"/>
+    <rect x="1060" y="290" width="140" height="50"/>
+    <g class="sl-window">
+      <rect x="196" y="200" width="8" height="12"/><rect x="214" y="200" width="8" height="12"/>
+      <rect x="196" y="240" width="8" height="12"/><rect x="214" y="240" width="8" height="12"/><rect x="232" y="240" width="8" height="12"/>
+      <rect x="532" y="180" width="7" height="11"/><rect x="544" y="180" width="7" height="11"/>
+      <rect x="530" y="228" width="7" height="11"/><rect x="546" y="228" width="7" height="11"/>
+      <rect x="672" y="210" width="8" height="12"/><rect x="690" y="210" width="8" height="12"/>
+      <rect x="874" y="242" width="8" height="12"/><rect x="896" y="242" width="8" height="12"/>
+      <rect x="1012" y="240" width="8" height="12"/><rect x="1032" y="240" width="8" height="12"/>
+      <rect x="30" y="310" width="8" height="12"/><rect x="52" y="310" width="8" height="12"/><rect x="74" y="310" width="8" height="12"/>
+      <rect x="1090" y="308" width="8" height="12"/><rect x="1112" y="308" width="8" height="12"/>
+    </g>
+  </g>`,
+
+  'euro-old': `
+  <g class="sl-far">
+    <rect x="60" y="256" width="96" height="84"/><rect x="390" y="248" width="80" height="92"/>
+    <rect x="860" y="252" width="90" height="88"/><rect x="1020" y="262" width="76" height="78"/>
+    <path d="M196 256c0-26 16-42 38-42s38 16 38 42Z"/>
+  </g>
+  <g class="sl-mid">
+    <!-- domed church -->
+    <path d="M690 340v-72h118v72Z"/>
+    <path d="M702 268c0-42 24-66 47-66s47 24 47 66Z"/>
+    <path d="M734 202c0-16 7-26 15-26s15 10 15 26Z"/>
+    <rect x="746" y="164" width="6" height="16"/>
+    <!-- bridge -->
+    <g class="sl-arcade">
+      <rect x="980" y="290" width="220" height="12"/>
+      <path d="M992 340v-30a17 17 0 0 1 34 0v30Zm56 0v-30a17 17 0 0 1 34 0v30Zm56 0v-30a17 17 0 0 1 34 0v30Z" class="sl-cut"/>
+    </g>
+    <!-- small spire -->
+    <rect x="452" y="236" width="24" height="104"/>
+    <path d="M448 236l16-42 16 42Z"/>
+  </g>
+  <g class="sl-near">
+    <!-- cathedral -->
+    <path d="M296 340V166h66v174Z"/>
+    <path d="M292 166l37-96 37 96Z"/>
+    <g class="sl-cross" stroke-width="4"><path d="M329 70V52M321 60h16"/></g>
+    <rect x="362" y="242" width="86" height="98"/>
+    <path d="M356 242l49-28 49 28Z"/>
+    <g class="sl-cut"><rect x="308" y="212" width="12" height="26"/><rect x="336" y="212" width="12" height="26"/>
+      <rect x="380" y="272" width="12" height="22"/><rect x="404" y="272" width="12" height="22"/><rect x="428" y="272" width="12" height="22"/></g>
+    <!-- clock tower -->
+    <rect x="520" y="172" width="46" height="168"/>
+    <path d="M514 172l29-40 29 40Z"/>
+    <circle class="sl-clock" cx="543" cy="210" r="14"/>
+    <rect x="540" y="118" width="6" height="18"/>
+    <!-- tiled roofs -->
+    <g>
+      <path d="M0 340v-58l42-26 42 26v58Z"/>
+      <path d="M92 340v-46l36-22 36 22v46Z"/>
+      <path d="M170 340v-54l40-24 40 24v54Z"/>
+      <path d="M596 340v-50l40-24 40 24v50Z"/>
+      <path d="M684 340v-42l34-20 34 20v42Z"/>
+      <path d="M828 340v-56l42-26 42 26v56Z"/>
+      <path d="M920 340v-44l36-22 36 22v44Z"/>
+    </g>
+    <g class="sl-window">
+      <rect x="26" y="300" width="9" height="14"/><rect x="50" y="300" width="9" height="14"/>
+      <rect x="110" y="308" width="9" height="14"/><rect x="134" y="308" width="9" height="14"/>
+      <rect x="614" y="306" width="9" height="14"/><rect x="640" y="306" width="9" height="14"/>
+      <rect x="846" y="300" width="9" height="14"/><rect x="872" y="300" width="9" height="14"/>
+      <rect x="938" y="310" width="9" height="14"/><rect x="962" y="310" width="9" height="14"/>
+    </g>
+  </g>`,
+
+  domes: `
+  <g class="sl-far">
+    <rect x="30" y="262" width="110" height="78"/><rect x="250" y="254" width="86" height="86"/>
+    <rect x="900" y="258" width="100" height="82"/><rect x="1100" y="266" width="100" height="74"/>
+    <path d="M160 262c0-30 20-48 44-48s44 18 44 48Z"/>
+  </g>
+  <g class="sl-mid">
+    <!-- secondary mosque -->
+    <path d="M160 340v-56h132v56Z"/>
+    <path d="M182 284c0-40 20-62 44-62s44 22 44 62Z"/>
+    <rect x="223" y="196" width="6" height="28"/>
+    <rect x="146" y="188" width="12" height="152"/><path d="M141 188l11-30 11 30Z"/>
+    <rect x="294" y="188" width="12" height="152"/><path d="M289 188l11-30 11 30Z"/>
+    <!-- palms -->
+    <g class="sl-palm">
+      <rect x="1044" y="262" width="7" height="78"/>
+      <path d="M1048 262c-20-13-35-11-46 4 17-4 28-2 35 6-15 2-24 9-28 22 13-11 24-15 33-11-7 9-9 20-5 31 5-15 11-22 18-24 6 5 9 15 11 26 4-15 2-26-4-33 11-2 20 2 29 11-4-15-13-22-26-26 9-5 22-5 37 2-11-17-28-20-48-8Z"/>
+    </g>
+  </g>
+  <g class="sl-near">
+    <!-- great mosque -->
+    <path d="M476 340v-92h248v92Z"/>
+    <path d="M520 248c0-72 36-114 80-114s80 42 80 114Z"/>
+    <path d="M482 248c0-42 20-66 46-66s46 24 46 66Z"/>
+    <path d="M626 248c0-42 20-66 46-66s46 24 46 66Z"/>
+    <path d="M592 134c0-18 3-30 8-30s8 12 8 30Z"/>
+    <rect x="597" y="88" width="6" height="20"/>
+    <!-- minarets -->
+    <rect x="436" y="96" width="18" height="244"/>
+    <path d="M430 96l15-40 15 40Z"/>
+    <rect x="428" y="152" width="34" height="8"/><rect x="428" y="200" width="34" height="8"/>
+    <rect x="746" y="96" width="18" height="244"/>
+    <path d="M740 96l15-40 15 40Z"/>
+    <rect x="738" y="152" width="34" height="8"/><rect x="738" y="200" width="34" height="8"/>
+    <!-- low town -->
+    <rect x="0" y="292" width="180" height="48"/><rect x="200" y="300" width="150" height="40"/>
+    <rect x="360" y="296" width="100" height="44"/><rect x="740" y="298" width="150" height="42"/>
+    <rect x="900" y="288" width="130" height="52"/><rect x="1060" y="300" width="140" height="40"/>
+    <g class="sl-cut">
+      <path d="M40 340v-26a12 12 0 0 1 24 0v26Zm60 0v-26a12 12 0 0 1 24 0v26Z"/>
+      <path d="M930 340v-24a11 11 0 0 1 22 0v24Zm50 0v-24a11 11 0 0 1 22 0v24Z"/>
+    </g>
+    <g class="sl-window">
+      <rect x="230" y="314" width="9" height="13"/><rect x="254" y="314" width="9" height="13"/>
+      <rect x="770" y="312" width="9" height="13"/><rect x="794" y="312" width="9" height="13"/>
+      <rect x="1090" y="314" width="9" height="13"/><rect x="1114" y="314" width="9" height="13"/>
+    </g>
+  </g>`,
+
+  'asia-temple': `
+  <g class="sl-far">
+    <rect x="40" y="248" width="80" height="92"/><rect x="380" y="240" width="70" height="100"/>
+    <rect x="860" y="236" width="76" height="104"/><rect x="1080" y="250" width="90" height="90"/>
+  </g>
+  <g class="sl-mid">
+    <!-- chedi / prang -->
+    <path d="M880 340c4-64 12-118 20-150h12c8 32 16 86 20 150Z"/>
+    <path d="M894 190c2-26 6-44 12-44s10 18 12 44Z"/>
+    <rect x="903" y="118" width="6" height="32"/>
+    <path d="M846 340v-40h108v40Z"/>
+    <!-- small pavilion -->
+    <path d="M300 340v-40h96v40Z"/>
+    <path d="M286 300q62-16 124 0Z"/>
+    <path d="M294 284v-22h80v22Z"/>
+    <path d="M282 262q66-18 104 0Z"/>
+    <rect x="331" y="228" width="6" height="22"/>
+  </g>
+  <g class="sl-near">
+    <!-- tiered temple -->
+    <path d="M500 340v-54h200v54Z"/>
+    <path d="M470 286q130-30 260 0c-26-26-66-40-130-40s-104 14-130 40Z"/>
+    <path d="M512 246v-38h176v38Z"/>
+    <path d="M486 208q114-28 228 0c-24-24-58-36-114-36s-90 12-114 36Z"/>
+    <path d="M534 172v-34h132v34Z"/>
+    <path d="M510 138q90-24 180 0c-20-20-48-30-90-30s-70 10-90 30Z"/>
+    <path d="M590 108c0-22 4-38 10-38s10 16 10 38Z"/>
+    <rect x="597" y="52" width="6" height="22"/>
+    <!-- gate posts -->
+    <rect x="432" y="250" width="16" height="90"/><path d="M426 250l14-24 14 24Z"/>
+    <rect x="752" y="250" width="16" height="90"/><path d="M746 250l14-24 14 24Z"/>
+    <!-- shophouses -->
+    <g>
+      <path d="M0 340v-62h78v62Z"/><path d="M-6 278q42-18 90 0Z"/>
+      <path d="M86 340v-54h70v54Z"/><path d="M80 286q41-16 82 0Z"/>
+      <path d="M170 340v-58h74v58Z"/><path d="M164 282q43-17 86 0Z"/>
+      <path d="M980 340v-58h76v58Z"/><path d="M974 282q44-17 88 0Z"/>
+      <path d="M1064 340v-52h72v52Z"/><path d="M1058 288q42-16 84 0Z"/>
+      <path d="M1144 340v-60h56v60Z"/>
+    </g>
+    <g class="sl-window">
+      <rect x="18" y="298" width="9" height="14"/><rect x="44" y="298" width="9" height="14"/>
+      <rect x="188" y="302" width="9" height="14"/><rect x="214" y="302" width="9" height="14"/>
+      <rect x="998" y="302" width="9" height="14"/><rect x="1024" y="302" width="9" height="14"/>
+      <rect x="560" y="306" width="10" height="14"/><rect x="590" y="306" width="10" height="14"/><rect x="620" y="306" width="10" height="14"/>
+    </g>
+  </g>`,
+
+  coastal: `
+  <g class="sl-far">
+    <path d="M0 340V196l120-118 104 122 70-52 96 96v96Z"/>
+    <path d="M760 340V236l104-86 88 104 62-44 96 82v48Z"/>
+  </g>
+  <g class="sl-mid">
+    <path d="M300 340V244l96-74 88 96v74Z"/>
+    <!-- lighthouse -->
+    <path d="M1108 340l6-84h22l6 84Z"/>
+    <rect x="1110" y="240" width="30" height="16"/>
+    <path d="M1112 240l13-22 13 22Z"/>
+    <!-- pier -->
+    <g class="sl-arcade">
+      <rect x="520" y="300" width="230" height="8"/>
+      <rect x="532" y="308" width="6" height="32"/><rect x="578" y="308" width="6" height="32"/>
+      <rect x="624" y="308" width="6" height="32"/><rect x="670" y="308" width="6" height="32"/>
+      <rect x="716" y="308" width="6" height="32"/>
+    </g>
+    <!-- sailboat -->
+    <path d="M846 300l30-76 6 76Z"/>
+    <path d="M888 300l-2-58 26 58Z"/>
+    <path d="M836 300h92l-14 16h-64Z"/>
+  </g>
+  <g class="sl-near">
+    <!-- palms -->
+    <g class="sl-palm">
+      <rect x="150" y="246" width="8" height="94"/>
+      <path d="M154 246c-24-15-42-13-55 5 20-5 33-3 42 7-18 2-29 11-33 26 15-13 28-17 40-13-9 10-11 24-7 37 7-17 13-26 22-28 7 6 11 17 13 30 4-17 2-30-4-39 13-2 24 2 35 13-5-17-15-26-31-30 11-6 26-6 44 2-13-20-33-24-58-9Z"/>
+      <rect x="248" y="266" width="7" height="74"/>
+      <path d="M251 266c-20-12-35-11-46 4 17-4 28-2 35 6-15 2-24 8-27 21 12-10 23-14 33-11-8 9-10 20-6 31 6-14 11-21 18-23 6 5 9 14 11 25 3-14 1-25-4-32 11-2 19 2 29 11-4-14-13-21-26-25 9-5 21-5 36 2-11-16-27-20-45-6Z"/>
+      <rect x="1010" y="258" width="8" height="82"/>
+      <path d="M1014 258c-22-14-39-12-51 5 19-5 31-3 39 6-17 2-27 10-31 24 14-12 26-16 37-12-8 9-10 22-6 34 6-16 12-24 20-26 6 6 10 16 12 28 4-16 2-28-4-36 12-2 22 2 33 12-5-16-14-24-29-28 10-6 24-6 41 2-12-18-31-22-54-8Z"/>
+    </g>
+    <!-- waterfront low-rise -->
+    <g>
+      <path d="M0 340v-60h96v60Z"/><path d="M-4 280l50-24 50 24Z"/>
+      <path d="M180 340v-52h84v52Z"/><path d="M176 288l46-22 46 22Z"/>
+      <path d="M276 340v-64h90v64Z"/><path d="M272 276l47-24 47 24Z"/>
+      <path d="M382 340v-48h76v48Z"/>
+      <path d="M760 340v-58h92v58Z"/><path d="M756 282l48-24 48 24Z"/>
+      <path d="M862 340v-50h80v50Z"/>
+      <path d="M1040 340v-62h88v62Z"/><path d="M1036 278l46-24 46 24Z"/>
+      <path d="M1140 340v-46h60v46Z"/>
+    </g>
+    <g class="sl-window">
+      <rect x="20" y="300" width="9" height="14"/><rect x="46" y="300" width="9" height="14"/><rect x="72" y="300" width="9" height="14"/>
+      <rect x="296" y="296" width="9" height="14"/><rect x="322" y="296" width="9" height="14"/>
+      <rect x="780" y="300" width="9" height="14"/><rect x="806" y="300" width="9" height="14"/>
+      <rect x="1060" y="298" width="9" height="14"/><rect x="1086" y="298" width="9" height="14"/>
+    </g>
+  </g>`,
+
+  latin: `
+  <g class="sl-far">
+    <path d="M0 340V244l140-96 120 112 90-58 110 100v38Z"/>
+    <rect x="900" y="258" width="90" height="82"/><rect x="1080" y="248" width="100" height="92"/>
+  </g>
+  <g class="sl-mid">
+    <!-- hillside houses -->
+    <rect x="120" y="262" width="54" height="78"/><rect x="186" y="248" width="46" height="92"/>
+    <rect x="244" y="270" width="58" height="70"/>
+    <rect x="960" y="266" width="64" height="74"/><rect x="1036" y="254" width="50" height="86"/>
+    <!-- arcade -->
+    <g class="sl-arcade">
+      <rect x="740" y="272" width="200" height="12"/>
+      <path d="M752 340v-44a16 16 0 0 1 32 0v44Zm52 0v-44a16 16 0 0 1 32 0v44Zm52 0v-44a16 16 0 0 1 32 0v44Z" class="sl-cut"/>
+    </g>
+  </g>
+  <g class="sl-near">
+    <!-- colonial cathedral -->
+    <path d="M430 340v-96h280v96Z"/>
+    <path d="M430 244h280l-140-56Z"/>
+    <rect x="404" y="164" width="60" height="176"/>
+    <rect x="676" y="164" width="60" height="176"/>
+    <path d="M400 164h68l-34-30Z"/><path d="M672 164h68l-34-30Z"/>
+    <path d="M418 134c0-18 7-30 16-30s16 12 16 30Z"/>
+    <path d="M690 134c0-18 7-30 16-30s16 12 16 30Z"/>
+    <g class="sl-cross" stroke-width="4"><path d="M434 104V88M426 96h16"/><path d="M706 104V88M698 96h16"/></g>
+    <path d="M556 188c0-20 7-34 14-34s14 14 14 34Z"/>
+    <g class="sl-cut">
+      <rect x="424" y="206" width="18" height="30"/><rect x="696" y="206" width="18" height="30"/>
+      <path d="M548 340v-46a22 22 0 0 1 44 0v46Z"/>
+    </g>
+    <!-- low blocks -->
+    <rect x="0" y="288" width="140" height="52"/><rect x="156" y="296" width="120" height="44"/>
+    <rect x="290" y="290" width="120" height="50"/><rect x="724" y="298" width="120" height="42"/>
+    <rect x="860" y="288" width="130" height="52"/><rect x="1006" y="296" width="194" height="44"/>
+    <g class="sl-window">
+      <rect x="22" y="304" width="9" height="14"/><rect x="48" y="304" width="9" height="14"/><rect x="74" y="304" width="9" height="14"/>
+      <rect x="310" y="306" width="9" height="14"/><rect x="336" y="306" width="9" height="14"/>
+      <rect x="880" y="304" width="9" height="14"/><rect x="906" y="304" width="9" height="14"/>
+      <rect x="1030" y="312" width="9" height="14"/><rect x="1056" y="312" width="9" height="14"/>
+    </g>
+  </g>`,
+
+  harbour: `
+  <g class="sl-far">
+    <rect x="40" y="224" width="56" height="116"/><rect x="110" y="250" width="66" height="90"/>
+    <rect x="196" y="210" width="48" height="130"/><rect x="262" y="244" width="60" height="96"/>
+    <rect x="1080" y="236" width="56" height="104"/><rect x="1148" y="258" width="52" height="82"/>
+  </g>
+  <g class="sl-mid">
+    <rect x="96" y="262" width="50" height="78"/><rect x="240" y="256" width="44" height="84"/>
+    <rect x="318" y="238" width="52" height="102"/>
+    <rect x="340" y="214" width="6" height="26"/>
+    <rect x="1012" y="252" width="58" height="88"/>
+  </g>
+  <g class="sl-near">
+    <!-- arch bridge -->
+    <g>
+      <rect x="440" y="238" width="38" height="102"/><rect x="700" y="238" width="38" height="102"/>
+      <path d="M430 262h58v-14h-58Z"/><path d="M690 262h58v-14h-58Z"/>
+      <path d="M420 292c30-72 90-108 170-108s140 36 170 108h-22c-28-58-80-88-148-88s-120 30-148 88Z"/>
+      <rect x="404" y="286" width="370" height="12"/>
+      <g stroke-width="3" fill="none">
+        <path d="M500 286v-46M540 286v-62M580 286v-72M620 286v-72M660 286v-62M700 286v-46"/>
+      </g>
+    </g>
+    <!-- opera shells -->
+    <g>
+      <path d="M820 340c0-64 30-108 66-108 26 0 40 26 40 62v46Z"/>
+      <path d="M868 340c0-56 28-96 60-96 24 0 36 24 36 56v40Z"/>
+      <path d="M918 340c0-48 24-82 52-82 20 0 32 20 32 48v34Z"/>
+      <path d="M800 340v-22h220v22Z"/>
+    </g>
+    <!-- podium / foreshore -->
+    <rect x="0" y="300" width="400" height="40"/><rect x="1040" y="296" width="160" height="44"/>
+    <g class="sl-window">
+      <rect x="120" y="278" width="8" height="12"/><rect x="138" y="278" width="8" height="12"/>
+      <rect x="332" y="262" width="8" height="12"/><rect x="350" y="262" width="8" height="12"/>
+      <rect x="1060" y="310" width="8" height="12"/><rect x="1082" y="310" width="8" height="12"/>
+      <rect x="30" y="312" width="8" height="12"/><rect x="52" y="312" width="8" height="12"/><rect x="74" y="312" width="8" height="12"/>
+    </g>
+  </g>`
+
 };

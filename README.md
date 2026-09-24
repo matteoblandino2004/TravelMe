@@ -18,12 +18,20 @@ nearby.
 - **Recommendations** scored on how close a place is to your hotel, which
   categories your itinerary is missing, and the trip vibes you picked. Each
   suggestion states the reason it surfaced.
+- **Multi-city trips**: pick a region, then the countries, then the cities in
+  travel order, with nights per stop. Each leg carries its own hotel, itinerary,
+  map and recommendations, and the countdown rolls from stop to stop.
 - **Multiple trips**, kilometres or miles, and it all persists between visits.
 
-## Cities
+## Coverage
 
-Paris, New York, Tokyo, London, Rome, Barcelona, Lisbon, Amsterdam — each with
-five hotels and ~16 places carrying real coordinates.
+57 cities across 41 countries and 7 regions, each with real coordinates, three
+to five hotels, neighbourhoods and 8–16 curated places.
+
+Eight cities (Paris, New York, Tokyo, London, Rome, Barcelona, Lisbon,
+Amsterdam) have a bespoke hand-drawn skyline. The rest share seven archetype
+skylines — modern, old-European, domes-and-minarets, Asian temple, coastal,
+Latin colonial and harbour — chosen per city.
 
 ## Running it
 
@@ -40,7 +48,10 @@ as a Claude Artifact.
 ## Honest limits
 
 There is no live geocoding or map-tile service here, so the app works from a
-curated dataset rather than searching the whole world. Distances are
+curated dataset rather than searching the whole world: a city not in
+`data/cities-*.js` cannot be picked. Place details were written from general
+knowledge and are not verified against opening hours or closures — check before
+you travel. Distances are
 straight-line estimates with a 1.28x route factor — planning numbers, not
 directions. A hotel you type in yourself is placed at the centre of the
 neighbourhood you choose, and is marked approximate.

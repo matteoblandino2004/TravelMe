@@ -56,12 +56,20 @@
     </div>
   </section>
 
+  <section class="panel route-panel" id="routeWrap" hidden>
+    <div class="panel-head">
+      <h2 class="panel-title">Your route</h2>
+      <span class="panel-note" id="routeSummary"></span>
+    </div>
+    <div class="route" id="route" aria-label="Trip stops"></div>
+  </section>
+
   <div class="grid">
 
     <div class="col">
       <section class="panel">
         <div class="panel-head">
-          <h2 class="panel-title">Your base</h2>
+          <h2 class="panel-title" id="baseTitle">Your base</h2>
           <button class="btn btn-sm" id="hotelBtn">Change hotel</button>
         </div>
         <div id="baseCard"></div>
@@ -95,7 +103,7 @@
 
       <section class="panel">
         <div class="panel-head">
-          <h2 class="panel-title">You might also like</h2>
+          <h2 class="panel-title" id="recsTitle">You might also like</h2>
           <button class="btn btn-sm btn-ghost" id="shuffleBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6M4 4l5 5"/></svg>
             Reshuffle
@@ -114,50 +122,64 @@
 </main>
 
 <dialog id="tripDlg" aria-labelledby="tripDlgTitle">
-  <form method="dialog" id="tripForm">
-    <div class="dlg-head">
+  <div class="dlg-head">
+    <div>
       <h2 class="dlg-title" id="tripDlgTitle">New trip</h2>
-      <button class="btn btn-icon btn-ghost" value="cancel" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
+      <div class="crumbs" id="wCrumbs"></div>
     </div>
-    <div class="dlg-body">
+    <button class="btn btn-icon btn-ghost" id="wClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="dlg-body">
+    <section id="wStep1">
+      <p class="hint">Where in the world are you heading?</p>
+      <div class="choices" id="wRegions"></div>
+    </section>
+
+    <section id="wStep2" hidden>
+      <p class="hint" id="wCountryNote"></p>
+      <div class="choices" id="wCountries"></div>
+    </section>
+
+    <section id="wStep3" hidden>
+      <input class="input" type="search" id="citySearch" placeholder="Search cities…" aria-label="Search cities">
+      <div id="wCities" style="margin-top:12px"></div>
+      <div class="ord-head eyebrow">Your route — tap order</div>
+      <div id="wOrder"></div>
+    </section>
+
+    <section id="wStep4" hidden>
+      <div class="two">
+        <div class="field">
+          <label for="wDate">Arrival date</label>
+          <input class="input" type="date" id="wDate" required>
+        </div>
+        <div class="field">
+          <label for="wTime">Arrival time (local)</label>
+          <input class="input" type="time" id="wTime" value="14:00">
+        </div>
+      </div>
       <div class="field">
-        <label for="fCity">Where are you going?</label>
-        <div class="choices" id="fCityChoices"></div>
-        <select id="fCity" class="sr" tabindex="-1" aria-hidden="true"></select>
-      </div>
-      <div class="two">
-        <div class="field">
-          <label for="fDate">Arrival date</label>
-          <input class="input" type="date" id="fDate" required>
-        </div>
-        <div class="field">
-          <label for="fTime">Arrival time (local)</label>
-          <input class="input" type="time" id="fTime" value="14:00" required>
-        </div>
-      </div>
-      <div class="two">
-        <div class="field">
-          <label for="fBack">Flying home</label>
-          <input class="input" type="date" id="fBack">
-        </div>
-        <div class="field">
-          <label for="fName">Trip name</label>
-          <input class="input" type="text" id="fName" placeholder="Optional" maxlength="40">
-        </div>
+        <label for="wName">Trip name</label>
+        <input class="input" type="text" id="wName" placeholder="Optional" maxlength="48">
       </div>
       <div class="field">
         <label>What are you there for?</label>
-        <div class="choices" id="fVibes"></div>
-        <p class="hint">Used to weight the recommendations. Pick as many as you like.</p>
+        <div class="choices" id="wVibes"></div>
+        <p class="hint">Used to weight the recommendations in every city.</p>
       </div>
-    </div>
-    <div class="dlg-foot">
-      <button class="btn" value="cancel" type="submit">Cancel</button>
-      <button class="btn btn-primary" value="save" type="submit" id="tripSave">Save trip</button>
-    </div>
-  </form>
+      <p class="hint mono" id="wSummary"></p>
+    </section>
+  </div>
+
+  <div class="dlg-foot">
+    <button class="btn" id="wCancel">Cancel</button>
+    <button class="btn" id="wBack" hidden>Back</button>
+    <button class="btn btn-primary" id="wNext">Next</button>
+    <button class="btn btn-primary" id="wSave" hidden>Start the countdown</button>
+  </div>
 </dialog>
 
 <dialog id="hotelDlg" aria-labelledby="hotelDlgTitle">
@@ -205,6 +227,10 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="data.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/cities-europe.js"></script>
+<script src="data/cities-asia.js"></script>
+<script src="data/cities-americas.js"></script>
+<script src="data/cities-rest.js"></script>
 <script src="skylines.js"></script>
 <script src="app.js"></script>
